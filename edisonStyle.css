@@ -1,0 +1,617 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/******** End CSS Reset *******/
+@font-face {
+    font-family: 'lubalin_graphregular';
+    src: url('asetts/lubalin_graph_regular-webfont.woff2') format('woff2'),
+         url('asetts/lubalin_graph_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+	font-size: 16px;
+	
+}
+h1 {
+	font-size: 5.0rem;
+	color: #f8981c;	
+	font-family: 'lubalin_graphregular' , sans-serif;
+}
+h2 {
+	font-size: 2.5rem;	
+	color: #fff;
+	font-family: 'lubalin_graphregular' , sans-serif;
+}
+h3 {
+	font-size: 1.5rem;	
+	color: #fff;
+	font-family: 'lubalin_graphregular' , sans-serif;
+}
+h4 {
+	font-size: 15px;	
+	color: #2a2a2a;
+	/*font-family: 'Roboto', sans-serif;*/
+	font-family: 'Open Sans', sans-serif;
+}
+h5 {
+	font-size: 9px;
+	color: #2a2a2a;
+	font-family: 'Open Sans', sans-serif;	
+}
+h6 {
+	font-size: 8px;
+	color: #afafaf;	
+}
+p {
+	font-size: 12px;
+	color: #2a2a2a;	
+}
+body {
+	font-size: calc(0.75em + 1vmin);
+}
+#container {
+	max-width: 624px;
+	height: 854px;
+	margin: auto;
+	background-color: #fff;
+}
+
+header {
+	/*width: 624px;*/
+	width: 100%;
+	height: 190px;
+	margin-bottom: 12px;
+	background-image:url(images/headerBG.jpg);	
+}
+#topNav {
+	width: 100%;
+	height: 42px;
+	background-color: #2a2a2a;	
+}
+button {
+	width: 190px;
+	/*height: 30px;*/
+	border: none;
+	border-radius:0px 0px 6px 6px;
+	background-color: #afafaf;	
+}
+#gcBtn {
+	height: 35px;
+	background-color: #f8981c;
+	margin-left: 17px;
+}
+#gcBtn h4 {
+	font-family: 'Poppins', sans-serif;	
+}
+#infoBtn {
+	width: 190px;
+	margin: auto;
+	margin-top: -45px;
+	display: block;
+	background-color: #2a2a2a;
+}
+
+#infoBtn h4 {
+	color:#f8981c;	
+}
+
+
+
+#mrBtn {
+	height: 35px;
+	background-color: #afafaf;
+	float: right;
+	margin-right: 17px;	
+	padding-bottom: 10px;
+}
+#mrBtn h5 {
+	display:inline-block;
+	
+}
+
+#mrForm {
+	display:none;
+	width: 175px;
+	height: 55px;
+	margin: auto;
+	padding: 5px 2px 5px 2px;
+	background-color: #515151;
+	border-radius: 8px;
+	z-index: 5;
+}
+#mrBtn:hover {
+	height: 100px;	
+}
+#mrBtn:hover #mrForm {
+	display: block;	
+}
+#mrBtn:hover #mrBtn {
+	height: 95px;	
+}
+input[type="text"] {
+	height: 19px;
+	border-radius: 6px;
+	border: none;
+	font-size: 12px;
+}
+input[name="numParty"] {
+	width: 30px;	
+}
+input[name="date"] {
+	width: 75px;	
+}
+input[name="time"] {
+	width: 60px;	
+}
+input[type="submit"] {
+	width: 75px;
+	height: 25px;
+	border-radius: 4px;
+	border: none;
+	color: #f8981c;
+	background-color: #2a2a2a;
+	margin-top:10px;
+}
+@media only screen and (max-width: 550px) {
+	#infoBtn 	{
+		height: 45px;
+		/*padding-bottom: 10px;*/
+		margin-top: -10px;
+	}
+	#logoBox {
+		margin-top: 30px;	
+	}
+	header{
+		height:190px;	
+	}
+}
+@media only screen and (max-width: 450px) {
+	header {
+		background-image:none;	
+	}
+	
+	button 	{
+		width: 75%;
+		display: block;
+		float:none;
+	}
+	#topNav {
+		height: 70px;
+	}
+	#mrBtn {
+		margin: auto;
+		float: none;
+	}
+	#gcBtn {
+		margin: auto;
+	}
+	#infoBtn {
+		width: 100%;
+		margin-top: 0px;	
+	}
+	#logoBox {
+		margin-top:0px;	
+	}
+}
+#logoBox {
+	/*width: 624px;*/
+	width: 100%;
+	height: 78px;
+	margin-top: 60px;	
+	clear: both;
+}
+@media only screen and (max-width: 550px) {
+	#logoBox {
+		margin-top: 25px;	
+	}
+}
+@media only screen and (max-width: 450px) {
+	#logoBox {
+		margin-top:0px;	
+	}
+}
+
+#logo {
+	/*width: 402px;*/
+	width: 64.75%;
+	height: 78px;
+	padding-left: 10px;
+	background-color: rgba(255,255,255,.95);
+	float: left;
+	box-sizing:border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+#logo h1 {
+	padding-top:15px;
+	font-size: 13vw;
+	
+}
+@media only screen and (min-width: 600px) {
+	#logo h1 	{
+	font-size: 5.0rem;
+	}
+}
+#divider {
+	width: 1.75%;
+	/*width: 12px;*/
+	height:78px;	
+	background-color:rgba(42,42,42,.95);
+	float: left;	
+}
+#logoDesc {
+	/*width: 200px;*/
+	width: 33.5%;
+	height:78px;
+	background-color:rgba(81,81,81,.95);
+	float: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#logoDesc h2 {
+	font-size: 7.25vw;	
+}
+#logoDesc h3 {
+	font-size: 4.0vw;	
+}
+@media only screen and (min-width: 600px) {
+	#logoDesc h2 	{
+	font-size: 2.5rem;
+	}
+	#logoDesc h3 	{
+	font-size: 1.5rem;
+	}
+}
+@media only screen and (max-width: 420px) {
+	#logo {
+		width: 100%;
+		height: 50px;
+		align-items: center;
+		padding: 0px;
+	}
+	#divider {
+		width: 100%;
+		height:3px;	
+	}
+	#logoDesc {
+		width: 100%;
+		height:48px;
+		/*background-color:rgba(81,81,81,1);*/
+		background-color:#fff;
+	}
+	#logoDesc h2 	{
+	color: #afafaf;
+	}
+	#logoDesc h3 	{
+	color: #afafaf;
+	}
+}
+
+
+/******top 6 & bottom 6 rectangular menu boxes*******/
+.contentWrap {
+	max-width: 600px;
+	height: 50vmin;
+	/*height: 15vmin;*/
+	max-height: 300px;
+	/*max-height: 90px;*/
+	margin:auto;
+	/*margin-top: 12px;*/
+	background-color: #666;	
+	/*overflow: hidden;*/
+	transition-property: height, max-height;
+	transition-duration: .5s;
+	transition-timing-function: ease-in-out;
+	
+/*	transition: 3s ease-in-out max-height;
+*/}
+.menuBox {
+	/*Large MenuBox settings*/
+	width: 33.33%;
+	/*width: 16.6%;*/
+	/*height: 100%;*/
+	height: 50%;
+	padding: 5px;
+	background-color: #fff;
+	float: left;
+	box-sizing: border-box;	
+	/*transition: .5s linear height 2s;*/
+}
+@media only screen and (max-width: 420px) {
+.menuBox 	{
+	width:100%;
+	height: 90px;
+	padding: 5px 10px 5px 10px;
+	}
+}
+.box {
+	width: 100%;
+	height: 100%;
+	background-color: #515151;
+	background-size: cover;	
+	overflow: hidden;
+	/*max-width: 190px;*/
+	/*max-height: 140px;*/
+}
+/*styles for each individual menu box*/
+#welcomeBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 0%;
+}
+#welcomeBox h1 {
+	font-size: 26vw;
+	color: #fff;
+}
+@media only screen and (min-width: 600px) {
+	#welcomeBox h1 	{
+	font-size: 160px;
+	}
+}
+#wineBox {
+	background-image: url(images/corkscrew.jpg);
+}
+
+#crewBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f8981c;
+}
+#crewBox h1 {
+	font-size: 26vw;
+	color: #fff;
+}
+@media only screen and (min-width: 600px) {
+	#crewBox h1 	{
+	font-size: 160px;
+	}
+}
+#elementalBox {
+	background-image: url(images/burger.jpg);
+}
+#productBox {
+	background-image: url(images/fish.jpg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#productBox h3 {
+	font-size: 3vw;
+	letter-spacing: 1.5px;
+	text-shadow: 0px 2px 0px #000;
+}
+@media only screen and (min-width: 600px) {
+	#productBox h3 	{
+	font-size: 18px;
+	}
+}
+#beerBox {
+	background-image: url(images/beer.jpg);
+}
+#techniqueBox {
+	background-image: url(images/whisk.jpg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#techniqueBox h3 {
+	font-size: 3vw;
+	letter-spacing: 1.5px;
+	text-shadow: 0px 2px 0px #000;
+}
+@media only screen and (min-width: 600px) {
+	#techniqueBox h3 	{
+	font-size: 18px;
+	}
+}
+#menuBox {
+	
+}
+#creativityBox {
+	background-image: url(images/chili-powder.jpg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#creativityBox h3 {
+	font-size: 3vw;
+	letter-spacing: 1.5px;
+	text-shadow: 0px 2px 0px #000;
+}
+@media only screen and (min-width: 600px) {
+	#creativityBox h3 	{
+	font-size: 18px;
+	}
+}
+#lab916Box {
+	
+}
+#dishyBox {
+	background-image: url(images/dessert.jpg);
+}
+#hereBox {
+	background-image: url(images/map.jpg);
+}
+
+/***********expanded main content area***********/
+
+.desktopContent {
+	max-width: 0px;
+	height: 0vmin;
+	max-height: 0px;
+	margin:auto;
+	background-color: #666;	
+	overflow: hidden;
+	/*display: none;*/
+	transition: .5s ease-in-out all;
+}
+.openDC {
+	max-width: 600px;
+	height: 72vmin;
+	max-height: 430px;
+	/*display: block;*/
+		
+}
+.content {
+	width: 100%;
+	height: 100%;
+	padding: 5px;
+	background-color: pink;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+#imageSlider {
+	width: 100%;
+	height: 70%;
+	float: left;
+	background-image:url(images/brew_1.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+#contentTextBox {
+	width: 100%;
+	height: 30%;
+	float: left;
+	background-color: #fff;	
+}
+/*#contentBox {
+	/*large menuBox settings*//*
+	max-width: 600px;
+	width: 100%;
+	height: 430px;
+	padding: 5px 5px;
+	background-color: #6CF;
+	box-sizing: border-box;
+}*/
+footer {
+	/*width: 624px;*/
+	width: 100%;
+	min-height: 40px;
+	background-color: #afafaf;
+	margin-top: 12px;	
+}
+#email {
+	float: left;
+	margin-left: 17px;
+	padding-top: 7px;
+}
+#socialBox {
+	width: 190px;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding-left: 8px;
+}
+#socialBox a {
+	margin: 1px;	
+}
+#copyright {
+	float: right;
+	margin-right: 17px;
+	padding-top: 7px;
+	text-align: center;
+}
+.tabletContent {
+	width: 100%;
+	height: 300px;
+	background-color: blue;
+	float: left;	
+}
+#crewTab, #beerTab, #creativityTab, #hereTab {
+	display: none;	
+}
+.mobileContent {
+	width: 100%;
+	height: 175px;
+	background-color: red;
+	float: left;
+}
+#welcomeMC, #wineMC, #crewMC, #elementalMC, #productMC, #beerMC,
+#techniqueMC, #menuMC, #creativityMC, #lab961MC, #dishyMC, #hereMC {
+	display: none;		
+}
+
+.openCW {
+	height: 15vmin;
+	max-height: 90px;
+	/*transition: all .5s ease-in-out;*/	
+}
+.small {
+	width: 16.6%;
+	height: 100%;
+	/*transition: all .5s ease-in-out;*/	
+}
+
+
+@media only screen and (max-width: 600px) {
+	#email {
+		margin-left: 0px;	
+	}
+	#copyright {
+		margin-right: 0px;	
+	}
+}
+@media only screen and (max-width: 450px) {
+	#email, #copyright {
+		width: 100%;
+		margin:0px;	
+	}
+}
+ 
+font-family: 'Roboto', sans-serif;
+
+font-family: 'Comfortaa', cursive;
+
+font-family: 'Audiowide', cursive;
+font-family: 'Sonsie One', cursive;

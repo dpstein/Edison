@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Edison Food + Drink Lab</title>
+<link rel="stylesheet" type="text/css" href="edisonStyle.css">
+<script type="text/javascript" src="jquery-1.4.2.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700italic|Comfortaa:400,700|Audiowide|Sonsie+One' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div id="container">
+       <header>
+       		<div id="topNav"><!--holds Gift Certificates & Make A Reservation buttons-->
+            	<button id="gcBtn">
+                	<h4>GIFT CERTIFICATES</h4>
+                </button>
+                <button id="mrBtn">
+                	<h4>MAKE A RESERVATION</h4>
+                      <form id="mrForm" action="post">
+                          <input type="text" name="numParty" value="2">
+                          <input type="text" name="date" value="07/21/2016">
+                          <input type="text" name="time" value="7:00PM">
+                          <input type="submit" value="get table">
+                      </form>
+                    <h5>POWERED BY OPENTABLE</h5>
+                </button>
+            </div><!--end topNav-->
+            	<!--Info btn placed seperately so that it can be in the middle for desktop, but last for mobile-->
+             	<button id="infoBtn">
+                	<h4>813-254-7111</h4>
+                    <h6>912 W KENNEDY BLVD<br>TAMPA FLORIDA</h6>
+                </button>
+            
+            <div id="logoBox">
+            	<div id="logo"> <h1>edison</h1> </div>
+                <div id="divider"></div>
+                <div id="logoDesc">	<h3>food + drink</h3> <h2>lab</h2> </div>
+            </div><!--end LogoBox-->
+       </header>
+<!--/////////////////////////////////////////////////////////////////////////////-->       
+       <div class="contentWrap">
+                <div class="menuBox"><div class="box" id="welcomeBox"> <h1>e</h1> </div>
+                </div>
+            	<div class="mobileContent" id="welcomeMC"></div>
+            	<!------------->
+                <div class="menuBox"><div class="box" id="wineBox"></div>
+                </div>
+           		<div class="mobileContent" id="wineMC"></div>
+                <!------------->    
+                <div class="menuBox"><div class="box" id="crewBox"> <h1>+</h1> </div>
+                </div>
+            	<div class="mobileContent" id="crewMC"></div>
+            	<div class="tabletContent" id="crewTab"></div>
+         <!-------------------------------------------------------------------->   
+           		<div class="menuBox"><div class="box" id="elementalBox"></div>
+                </div>
+           		<div class="mobileContent" id="elementalMC"></div>
+            	<!------------->
+            	<div class="menuBox"><div class="box" id="productBox"> <h3>product</h3> </div>
+                </div>
+                <div class="mobileContent" id="productMC"></div>
+                <!------------->
+            	<div class="menuBox"><div class="box" id="beerBox"></div>
+                </div>
+            	<div class="mobileContent" id="beerMC"></div>
+                <div class="tabletContent" id="beerTab"></div>
+          <!--------------------------------------------------------------------> 
+       </div><!--end contentWrap, used to split .menuBox's into top & bottom groups for small squares on desktop--> 
+<!--/////////////////////////////////////////////////////////////////////////////-->          
+       <div class="desktopContent"><!--holds expanded content on desktop-->
+       		<div class="content">
+            	<div id="imageSlider"></div>
+                <div id="contentTextBox"></div>
+            </div>
+       </div><!--end mainContentWrap-->  
+<!--/////////////////////////////////////////////////////////////////////////////-->            
+       <div class="contentWrap">
+            	<div class="menuBox"><div class="box" id="techniqueBox"> <h3>technique</h3> </div>
+                </div>
+                <div class="mobileContent" id="techniqueMC"></div>
+                <!------------->
+            	<div class="menuBox"><div class="box" id="menuBox"></div>
+                </div>
+            	<div class="mobileContent" id="menuMC"></div>
+                <!------------->
+           	 	<div class="menuBox"><div class="box" id="creativityBox"> <h3>Creativity&#178;</h3> </div>
+                </div>
+                <div class="mobileContent" id="creativityMC"></div>
+                <div class="tabletContent" id="creativityTab"></div>
+          <!-------------------------------------------------------------------->       
+            	<div class="menuBox"><div class="box" id="lab916Box"></div>
+                </div>
+            	<div class="mobileContent" id="lab961MC"></div>
+                <!------------->
+            	<div class="menuBox"><div class="box" id="dishyBox"></div>
+                </div>
+            	<div class="mobileContent" id="dishyMC"></div>
+                <!------------->
+            	<div class="menuBox"><div class="box" id="hereBox"></div>
+               	</div>
+            	<div class="mobileContent" id="hereMC"></div>
+                <div class="tabletContent" id="hereTab"></div>
+          <!-------------------------------------------------------------------->       
+       </div>
+<!--/////////////////////////////////////////////////////////////////////////////-->          
+       <footer>
+       		<button id="email"><p>info@edison-tampa.com</p></button>
+            <button id="copyright"><p>2016 EDISON: FOOD + DRINK</p></button>
+            <div id="socialBox">
+            	<a href="#"><img src="images/instagramIcon.png"></a>
+            	<a href="#"><img src="images/twitterIcon.png"></a>
+                <a href="#"><img src="images/facebookIcon.png"></a>
+            </div>
+       </footer>
+       
+        
+       
+</div><!--close container-->
+<script src="edison.js"></script>
+</body>
+</html>
