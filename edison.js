@@ -1,79 +1,140 @@
 // JQuery Document
-
 $( document ).ready(function() {
 
+//Event listener on menu boxes to open content slider
+	$('.box').click(function(event) {
+		var viewportWidth = $(window).width();
+			console.log(viewportWidth);
+		var name = event.target.id;
+			console.log(name);
 
+			if (viewportWidth > 550) {
+				console.log("desktop view");
+				//$('.contentWrap').css({'height' : '15vmin' , 'maxHeight' : '90px', 'transition' : 'all .5s ease-in-out'});
+				$('.contentWrap').addClass('openCW');
+				//$('.menuBox').css({'width' : '16.6%' , 'height' : '100%', 'transition' : 'all .5s ease-in-out'});
+				$('.menuBox').addClass('small');
+				//$('.mainContentWrap').css('display', 'block');
+				//$('.desktopContent:hidden').slideToggle();
+				$('.desktopContent').addClass('openDC');
 
+				buildContentSlides(name);
 
-	
-$('.box').click(function(event) {
-	var viewportWidth = $(window).width();
-	console.log(viewportWidth);	
-	alert(event.target.id);
-	var name = event.target.id;
-		/*name =(name.val());*/
-		console.log(name);
-		
-		
-	if (viewportWidth > 550) {
-		console.log("desktop view");
-		//$('.contentWrap').css({'height' : '15vmin' , 'maxHeight' : '90px', 'transition' : 'all .5s ease-in-out'});
-		$('.contentWrap').addClass('openCW');
-		//$('.menuBox').css({'width' : '16.6%' , 'height' : '100%', 'transition' : 'all .5s ease-in-out'});
-		$('.menuBox').addClass('small');
-		//$('.mainContentWrap').css('display', 'block');
-		//$('.desktopContent:hidden').slideToggle();
-		$('.desktopContent').addClass('openDC');
-		
-		
-		buildSlides(name);	
-		
-	}
-	else if (viewportWidth < 450) {
-		console.log("Mobile view");
-		var $mobileContent = $('.mobileContent');
-		var $MC = $(this).parent().next(".mobileContent").stop(true).slideToggle(200);
-		$mobileContent.not($MC).filter(':visible').stop(true).slideUp();	
-	}
-	else {
-		console.log("Tablet View");
-		//$(this).parent().siblings(".tabletContent").slideToggle(200);
-		console.log($(this).parent().siblings(".tabletContent"));
-		var $tabletContent = $('.tabletContent');
-		var $TC = $(this).parent().nextAll(".tabletContent").eq(0).stop(true).slideToggle(200);
-		$tabletContent.not($TC).filter(':visible').stop(true).slideUp();
-	}
-	
-});
+			}else if (viewportWidth < 450) {
+				console.log("Mobile view");
+				var $mobileContent = $('.mobileContent');
+				var $MC = $(this).parent().next(".mobileContent").stop(true).slideToggle(200);
+				$mobileContent.not($MC).filter(':visible').stop(true).slideUp();
 
+				//buildContentSlides(name);
+			}else {
+				console.log("Tablet View");
+				console.log($(this).parent().siblings(".tabletContent"));
+				var $tabletContent = $('.tabletContent');
+				var $TC = $(this).parent().nextAll(".tabletContent").eq(0).stop(true).slideToggle(200);
+				$tabletContent.not($TC).filter(':visible').stop(true).slideUp();
 
+				//buildContentSlides(name);
+				}
+	});//end menubox event listeners
+
+//Logo event listener to close content slider
 $('#logoBox').click(function() {
-	console.log("you clicked the logo");
-	$('.desktopContent').removeClass('openDC');
-	//$('.contentWrap').css({'height' : '50vmin' , 'maxHeight' : '300px', 'transition' : 'all .5s ease-in-out'});
-	$('.contentWrap').removeClass('openCW');
-	//$('.menuBox').css({'width' : '33.3%' , 'height' : '50%', 'transition' : 'all .5s ease-in-out'});
-	$('.menuBox').removeClass('small');
-	//$('.mainContentWrap').css('display', 'none');
-	//$('.desktopContent:visible').slideUp(500);
-	
-});
+//Add statements to check viewport size
+
+			$('.desktopContent').removeClass('openDC');
+			//$('.contentWrap').css({'height' : '50vmin' , 'maxHeight' : '300px', 'transition' : 'all .5s ease-in-out'});
+			$('.contentWrap').removeClass('openCW');
+			//$('.menuBox').css({'width' : '33.3%' , 'height' : '50%', 'transition' : 'all .5s ease-in-out'});
+			$('.menuBox').removeClass('small');
+			//$('.mainContentWrap').css('display', 'none');
+			//$('.desktopContent:visible').slideUp(500);
+	});//end logo event listener
+
+function buildContentSlides(name){
+	console.log(name);
+	//remove any existing slides from DOM
+	$("#contentSlideList").empty("li");
+	var filebase = name;
+	var extension = 'jpg';
+	var directory = ('images/' + name + '/');
+	var numslides = 3;
+	// Build Slide String and place in slides array
+  var slides = [],
+  var	slideNumber = 1;
+
+    while(slideNumber <= numslides)	{
+				 slides.push('<img src="' + directory + filebase + "_" + slideNumber + '.' + extension + '">');
+				 slideNumber++;
+				 console.log(slides);
+      	 }
+		//insert slides into DOM
+		for (var i = 0; i < slides.length; ++i) {
+    		 var slideString = '<li>' + slides[i] + '</li>';
+				 console.log(slideString);
+				 $("#contentSlideList").append(slideString);
+				 }
+			animateSlider();
+	}//end buildslides function
 
 
+/////content slider controls and functions////////
 
-	
-//	$('.box').click(function() {
-//		console.log("you clicked a box");
-//		//$(this).parent().next(".mobileContent").slideToggle();
-//		
-//		var $mobileContent = $('.mobileContent');
-//		var $MC = $(this).parent().next(".mobileContent").stop(true).slideToggle(200);
-//		$mobileContent.not($MC).filter(':visible').stop(true).slideUp();	
-//	})
- 
-    
- 
-});
+//animate slider called by other controls (prev, next, play pause)
+	var slideWidth
+	function animateSlider(){
+		var slideCount = $('#contentSlider ul li').length;
+		    slideWidth = $('#contentSlider ul li').width();
+		console.log(slideWidth);
+		var slideHeight = $('#contentSlider ul li').height();
+		var sliderUlWidth = slideCount * slideWidth;
+
+		$('#contentSlider').css({ width: slideWidth, height: slideHeight });
+		$('#contentSlider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+    $('#contentSlider ul li:last-child').prependTo('#contentSlider ul');
+	}//end function animateSlider////
+
+	//play button control
+	var interval;
+		$('#play').click(function(){
+			interval = setInterval(function () {
+			moveRight();
+			}, 3000);
+		});
+
+	//pause button control
+		$('#pause').click(function(){
+			clearInterval(interval);
+		});
+
+  function moveLeft() {
+    $('#contentSlider ul').animate({
+      left: + slideWidth
+    	}, 2000,
+				function () {
+        $('#contentSlider ul li:last-child').prependTo('#contentSlider ul');
+        $('#contentSlider ul').css('left', '');
+        });
+    };
+
+  function moveRight() {
+    $('#contentSlider ul').animate({
+       left: - slideWidth
+       }, 2000,
+			 	function () {
+        $('#contentSlider ul li:first-child').appendTo('#contentSlider ul');
+        $('#contentSlider ul').css('left', '');
+        });
+    };
+
+    $('p.control_prev').click(function () {
+        moveLeft();
+    });
+
+    $('p.control_next').click(function () {
+        moveRight();
+    });
+});///////////////////////////end ready function//////////////////////////////////////////////
 
 //var errMsg = document.getElementById("errMsg");
 //var fName = document.getElementById("fName").addEventListener('blur', vFName, false);
@@ -110,8 +171,8 @@ $('#logoBox').click(function() {
 //	if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.value))
 //	{
 //	errMsg.style.visibility = "hidden";
-//	errMsg.textContent = ""; 
-//   	return (true) 
+//	errMsg.textContent = "";
+//   	return (true)
 //	}
 //	errMsg.style.visibility = "visible";
 //	errMsg.textContent = "That is not a valid zipcode";
@@ -165,17 +226,17 @@ $('#logoBox').click(function() {
 //	var form = document.getElementById("form");
 //	//var node = document.getElementsByClassName("pInstr");
 //	form.removeChild(form.lastChild);
-//	if (/^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{6,16}$/.test(this.value)) 
-//	{ 
+//	if (/^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{6,16}$/.test(this.value))
+//	{
 //	errMsg.style.visibility = "hidden";
-//	errMsg.textContent = ""; 
-//   	return (true)  
+//	errMsg.textContent = "";
+//   	return (true)
 //  	}
-//	errMsg.style.visibility = "visible";  
+//	errMsg.style.visibility = "visible";
 //    errMsg.textContent = "That is not a valid password";
 //	document.getElementById("password").focus();
 //    return (false)
-//}  
+//}
 //function vCPassword(){
 //	var password = document.getElementById("password");
 //	console.log(password);
@@ -196,7 +257,7 @@ $('#logoBox').click(function() {
 //}
 //
 //function launchMPlayer() {
-//	var account = document.getElementById("account");	
+//	var account = document.getElementById("account");
 //	  account.style.visibility = "hidden";
 //	var submitBtn = document.getElementById("submitBtn");
 //	  submitBtn.style.visibility = "hidden";

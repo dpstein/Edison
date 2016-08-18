@@ -364,6 +364,91 @@ input[type="submit"] {
 	box-sizing: border-box;	
 	/*transition: .5s linear height 2s;*/
 }
+
+/*content slider basic styles*/
+#contentSliderWrap {
+	width:1572px;
+	height: 298px;
+	display:block;
+	overflow-x:hidden;
+	overflow-y:auto;
+	padding-top:0px;
+	margin:10px 5px;
+	background-color: blue;
+}
+#contentSliderBox {
+	height:298px;
+	width:524px;
+	float:left;
+	background-color: rgba(204,204,204,.6);
+	margin:0px 20px ;
+	display:block;
+	background-color: green;
+}
+
+#contentSlider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: pink;
+}
+
+#contentslider ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 298px;
+  list-style: none;
+  background-color: yellow;
+}
+
+#contentSlider ul li {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 524px;
+  height: 298px;
+}
+p.control_prev, p.control_next {
+  position: absolute;
+  top: 25%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+  /*border-radius: 50%;*/
+}
+
+p.control_prev:hover, p.control_next:hover {
+  opacity: .7;
+  -webkit-transition: all 0.2s ease;
+}
+
+p.control_prev {
+  border-radius: 0 8px 8px 0;
+}
+
+p.control_next {
+  right: 0;
+  border-radius: 8px 0 0 8px;
+}
+
+
+
+
+
+
+
 @media only screen and (max-width: 420px) {
 .menuBox 	{
 	width:100%;
@@ -608,6 +693,8 @@ footer {
 		margin:0px;	
 	}
 }
+
+
  
 font-family: 'Roboto', sans-serif;
 
