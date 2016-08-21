@@ -60,8 +60,8 @@ function buildContentSlides(name){
 	var directory = ('images/' + name + '/');
 	var numslides = 3;
 	// Build Slide String and place in slides array
-  var slides = [],
-  var	slideNumber = 1;
+  var slides = [];
+  var slideNumber = 1;
 
     while(slideNumber <= numslides)	{
 				 slides.push('<img src="' + directory + filebase + "_" + slideNumber + '.' + extension + '">');
@@ -94,6 +94,8 @@ function buildContentSlides(name){
     $('#contentSlider ul li:last-child').prependTo('#contentSlider ul');
 	}//end function animateSlider////
 
+
+
 	//play button control
 	var interval;
 		$('#play').click(function(){
@@ -107,6 +109,16 @@ function buildContentSlides(name){
 			clearInterval(interval);
 		});
 
+	//next and previous button event listeners
+	$('p.control_prev').click(function () {
+        moveLeft();
+    });
+
+    $('p.control_next').click(function () {
+        moveRight();
+    });
+	
+	
   function moveLeft() {
     $('#contentSlider ul').animate({
       left: + slideWidth
@@ -127,13 +139,7 @@ function buildContentSlides(name){
         });
     };
 
-    $('p.control_prev').click(function () {
-        moveLeft();
-    });
-
-    $('p.control_next').click(function () {
-        moveRight();
-    });
+    
 });///////////////////////////end ready function//////////////////////////////////////////////
 
 //var errMsg = document.getElementById("errMsg");
